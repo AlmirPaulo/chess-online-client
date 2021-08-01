@@ -2,15 +2,20 @@ from pathlib import Path
 import pygame
 
 #Constants
+SQR_SIZE = 64
+BOARD_LEN = 8
 WIDTH = 640
 HEIGTH = 640
 FPS = 60
-SQR_COLOR1 = (255, 255, 255)
-SQR_COLOR2 = (0, 0, 0)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 
 #Initialization
 pygame.init()
 pygame.mixer.init()
+
+#caption
+pygame.display.set_caption("Online Chess")
 
 #Global Variables
 screen = pygame.display.set_mode((WIDTH, HEIGTH))
@@ -36,9 +41,21 @@ move_sound = pygame.mixer.Sound(Path('src/sound/move.wav'))
 take_sound = pygame.mixer.Sound(Path('src/sound/take.wav'))
 
 #Game Logic Functions
-
+def board_draw():
+    cnt = 0
+    for i in range(1, BOARD_LEN+1):
+        for z in range(1, BOARD_LEN+1):
+            if cnt % 2 == 0:
+                pygame.draw.rect(screen, WHITE, (SQR_SIZE*z,SQR_SIZE*i,SQR_SIZE,SQR_SIZE))
+            else:
+                pygame.draw.rect(screen, BLACK, (SQR_SIZE*z,SQR_SIZE*i,SQR_SIZE,SQR_SIZE))
+            cnt +=1
+        cnt -= 1
+    pygame.draw.rect(screen,BLACK,(64, 64, BOARD_LEN*64, BOARD_LEN*64), 1)
 #Screen drawing Function
 def draw():
+    screen.fill((200,200,200))
+    board_draw()
     pygame.display.update()
 
 #Game main loop
