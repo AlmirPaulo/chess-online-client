@@ -16,10 +16,6 @@ class Player:
         self.room = room
 
     
-#Functions
-def set_game(room):
-    p = Player(room)
-    return p
 
 def set_ai(room):
     pass
