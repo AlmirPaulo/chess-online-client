@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 pygame = "*"
-simple-websocket = "*"
 chess = "*"
-pysimplegui = "*"
+PySimpleGUI = "*"
+simple-websocket = "*"
 
 [dev-packages]
 

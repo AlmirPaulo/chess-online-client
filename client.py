@@ -1,5 +1,5 @@
 #! /usr/bin/env python3 
-import simple_websocket, random, argparse
+import simple_websocket, random, argparse, pdb
 
 #CLI
 parser = argparse.ArgumentParser(description='Blind Chess Online')
@@ -34,9 +34,11 @@ def main():
     try:
         while True:
             move = input('> ')
-            socket.send(move) 
+            socket.send(f'{move}/{player.color}') 
+            print(move)
             resp = socket.receive()
             print(f'< {resp}')
+            # pdb.set_trace()
 
     except(KeyboardInterrupt, EOFError, simple_websocket.ConnectionClosed):
         socket.close()
