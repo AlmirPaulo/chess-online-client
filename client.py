@@ -15,10 +15,6 @@ class Player:
         self.color = random.choice(['white','black'])
         self.room = room
 
-    
-
-def set_ai(room):
-    pass
 
 #Game loop
 def main():
@@ -43,4 +39,5 @@ def main():
     except(KeyboardInterrupt, EOFError, simple_websocket.ConnectionClosed):
         socket.close()
 
-main()
+if __name__ == '__main__':
+    main()
